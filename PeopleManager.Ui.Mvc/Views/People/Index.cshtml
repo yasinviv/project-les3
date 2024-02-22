@@ -1,0 +1,31 @@
+﻿@model IList<Person>
+
+@{
+    ViewData["Title"] = "People List";
+}
+
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+    
+    @foreach (var person in Model)
+    {
+        <tr>
+            <td>@person.FirstName</td>
+            <td>@person.LastName</td>
+            <td>
+                @if (!string.IsNullOrWhiteSpace(person.Email))
+                {
+                    <a href="mailto:@person.Email">@person.Email</a>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
